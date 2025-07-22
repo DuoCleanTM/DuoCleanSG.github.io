@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bin & Window Cleaning</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      animation: fadeIn 1.5s ease;
+    }
+
+    header {
+      background: #1e88e5;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      animation: fadeIn 2s ease;
+    }
+
+    .prices, .faq, .gallery {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .prices h2, .faq h2, .gallery h2 {
+      margin-top: 0;
+      color: #1e88e5;
+    }
+
+    .prices ul {
+      padding-left: 1.25rem;
+      margin: 0.5rem 0 1.5rem 0;
+      color: #555;
+    }
+
+    .prices ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #555;
+    }
+
+    .btn {
+      background: #1e88e5;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #1565c0;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+      z-index: 999;
+    }
+
+    .popup.active {
+      display: flex;
+    }
+
+    .form-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      animation: slideIn 0.5s ease;
+      position: relative;
+    }
+
+    .form-box h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .close-btn {
+      background: #ccc;
+      color: #333;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      background: #999;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-30px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      .form-box {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bin & Window Cleaning Services</h1>
+    <p>Support a New Local Business</p>
+  </header>
+
+  <div class="container">
+    <div class="prices">
+      <h2>Our Services</h2>
+      <p>We're two young entrepreneurs offering reliable bin and window cleaning at affordable rates.</p>
+      <h3>Bin Cleaning:</h3>
+      <ul>
+        <li>Large bins – $20 each</li>
+        <li>Medium bins – $15 each</li>
+        <li>Small bins – $10 each</li>
+      </ul>
+      <h3>Window Cleaning (Coming Soon):</h3>
+      <ul>
+        <li>Exterior windows – $30 flat rate</li>
+      </ul>
+      <p>Every customer makes a big difference. With your support, we can grow and offer even more in the future. Thank you for helping local youth get their start.</p>
+      <button class="btn" onclick="togglePopup()">Book Now!</button>
+    </div>
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>How soon can you book?</h3>
+        <p>We can usually schedule your cleaning within 2-3 business days.</p>
+        <p>Make sure NOT to book on Saturday or Sunday. If you do, your booking will be cancelled.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you clean inside bins?</h3>
+        <p>Yes, we clean inside and outside to ensure full sanitation.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you service commercial areas?</h3>
+        <p>Currently, we focus on residential bins, but commercial services are coming soon.</p>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Gallery</h2>
+      <p>Here’s a real example of our bin cleaning service:</p>
+<img src="https://raw.githubusercontent.com/DuoCleanTM/DuoCleanSG/main/Before-and-After23.jpg" alt="Before and After Bin Cleaning">
+
+    </section>
+  </div>
+
+  <!-- Popup Form -->
+  <div class="popup" id="popupForm">
+    <div class="form-box">
+      <button class="close-btn" aria-label="Close form" onclick="togglePopup()">&times;</button>
+      <h3>Contact Us</h3>
+      <form action="https://formsubmit.co/duocleannotis@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Booking Request">
+        <input type="hidden" name="_next" value="thank-you.html">
+        <input type="text" name="name" placeholder="Your Name" required autocomplete="name">
+        <input type="email" name="email" placeholder="Your Email" required autocomplete="email">
+        <textarea name="message" placeholder="Let us know what you need..." rows="4" required></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function togglePopup() {
+      document.getElementById('popupForm').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
